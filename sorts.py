@@ -40,3 +40,53 @@ def insertion_sort(elements: list):
 
 
     return elements
+
+
+def merge_sort(elements: list, left: int, right: int):
+    if right <= left:
+        return
+
+    mid = int (left + ((right-left)>>1))
+
+    # print("merge_sort {0} {1} {2}".format(elements,left,mid))
+    merge_sort(elements,left,mid)
+    # print("merge_sort {0} {1} {2}".format(elements,mid+1,right))
+    merge_sort(elements,mid+1,right)
+
+    # print('hello')
+    tmplist = []
+    idxleft = left
+    idxright = right
+    while idxleft <= mid and idxright <= right:
+        if elements[idxleft] <= elements[idxright]:
+            tmplist.append(elements[idxleft])
+            idxleft += 1
+        else:
+            tmplist.append(elements[idxright])
+            idxright += 1
+
+    print("no tail",tmplist)
+    
+    if(idxleft > mid):
+        for i in range(idxright,right+1):
+            tmplist.append(elements[i])
+    else:
+        for i in range(idxleft,mid+1):
+            tmplist.append(elements[i])
+
+
+    print(tmplist)
+    return
+
+
+
+
+
+
+
+
+
+
+
+
+# ocupy spaces

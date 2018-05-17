@@ -67,12 +67,17 @@ def test_sorts(testmethod: 'function' = bubble_sort,testcases: 'int' =3000) -> b
 
 def main():
     testcases = 3000
-    testmethod = sorts.bubble_sort
-    test_sorts(testmethod)
+    testmethod = sorts.merge_sort
+    # test_sorts(testmethod)
 
-    lst = [-79, 46, -47, 34, -92, -66, 16, -87, -88, -22]
-    print(lst)
-    print(testmethod(lst))
+    lst = [i for i in range(10,-1,-1)]
+    print("input: ",lst)
+    if testmethod == sorts.merge_sort:
+        testmethod(lst,0,len(lst)-1)
+        print(lst)
+    else:
+        print(testmethod(lst))
+
 
 
 
