@@ -45,7 +45,14 @@ def test_sorts(testmethod: 'function' = bubble_sort,testcases: 'int' =3000) -> b
     for i in range(testcases):
         testlist = random_array()
         copylist = testlist[:]
-        result_test = testmethod(copylist)
+
+        # a little stupid in here
+        if testmethod == sorts.merge_sort:
+            testmethod(copylist,0,len(copylist)-1)
+            result_test = copylist[:]
+        else:
+            result_test = testmethod(copylist)
+
         result_true = sorted(testlist)
         if not equal_list(result_test,result_true):
             work = 0
@@ -68,15 +75,16 @@ def test_sorts(testmethod: 'function' = bubble_sort,testcases: 'int' =3000) -> b
 def main():
     testcases = 3000
     testmethod = sorts.merge_sort
-    # test_sorts(testmethod)
+    test_sorts(testmethod)
 
-    lst = [i for i in range(10,-1,-1)]
-    print("input: ",lst)
-    if testmethod == sorts.merge_sort:
-        testmethod(lst,0,len(lst)-1)
-        print(lst)
-    else:
-        print(testmethod(lst))
+    # sigel testmethod
+    # lst = [i for i in range(10,-1,-2)]
+    # print("input: ",lst)
+    # if testmethod == sorts.merge_sort:
+    #     testmethod(lst,0,len(lst)-1)
+    #     print(lst)
+    # else:
+    #     print(testmethod(lst))
 
 
 

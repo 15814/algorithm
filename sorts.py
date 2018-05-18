@@ -54,31 +54,54 @@ def merge_sort(elements: list, left: int, right: int):
     merge_sort(elements,mid+1,right)
 
     # print('hello')
-    tmplist = []
-    idxleft = left
-    idxright = right
-    while idxleft <= mid and idxright <= right:
-        if elements[idxleft] <= elements[idxright]:
-            tmplist.append(elements[idxleft])
-            idxleft += 1
-        else:
-            tmplist.append(elements[idxright])
-            idxright += 1
 
-    print("no tail",tmplist)
-    
-    if(idxleft > mid):
-        for i in range(idxright,right+1):
-            tmplist.append(elements[i])
-    else:
-        for i in range(idxleft,mid+1):
-            tmplist.append(elements[i])
+    merge(elements,left,mid,right)
 
-
-    print(tmplist)
+    # print(elements)
     return
 
 
+def merge(elements: list, left: int, mid: int, right: int):
+    if right > left:
+
+        L = [0] * (mid-left+1)
+        R = [0] * (right-mid)
+
+        # copy the list to L[] and R[]
+        j = 0
+        for i in range(left,mid+1):
+            L[j] = elements[i]
+            j += 1
+
+        j = 0
+        for i in range(mid+1,right+1):
+            R[j] = elements[i]
+            j += 1
+
+        idxleft = 0
+        idxright = 0
+        idxelements = left
+        while idxleft < len(L) and idxright < len(R):
+            if L[idxleft] <= R[idxright]:
+                elements[idxelements] = L[idxleft]
+                idxleft += 1
+            else:
+                elements[idxelements] = R[idxright]
+                idxright += 1
+
+            idxelements += 1
+
+        while idxleft < len(L):
+            elements[idxelements] = L[idxleft]
+            idxleft += 1
+            idxelements += 1
+
+        while idxright < len(R):
+            elements[idxelements] = R[idxright]
+            idxright += 1
+            idxelements += 1
+
+        return
 
 
 
