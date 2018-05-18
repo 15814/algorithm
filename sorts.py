@@ -40,3 +40,76 @@ def insertion_sort(elements: list):
 
 
     return elements
+
+
+def merge_sort(elements: list, left: int, right: int):
+    if right <= left:
+        return
+
+    mid = int (left + ((right-left)>>1))
+
+    # print("merge_sort {0} {1} {2}".format(elements,left,mid))
+    merge_sort(elements,left,mid)
+    # print("merge_sort {0} {1} {2}".format(elements,mid+1,right))
+    merge_sort(elements,mid+1,right)
+
+    # print('hello')
+
+    merge(elements,left,mid,right)
+
+    # print(elements)
+    return
+
+
+def merge(elements: list, left: int, mid: int, right: int):
+    if right > left:
+
+        L = [0] * (mid-left+1)
+        R = [0] * (right-mid)
+
+        # copy the list to L[] and R[]
+        j = 0
+        for i in range(left,mid+1):
+            L[j] = elements[i]
+            j += 1
+
+        j = 0
+        for i in range(mid+1,right+1):
+            R[j] = elements[i]
+            j += 1
+
+        idxleft = 0
+        idxright = 0
+        idxelements = left
+        while idxleft < len(L) and idxright < len(R):
+            if L[idxleft] <= R[idxright]:
+                elements[idxelements] = L[idxleft]
+                idxleft += 1
+            else:
+                elements[idxelements] = R[idxright]
+                idxright += 1
+
+            idxelements += 1
+
+        while idxleft < len(L):
+            elements[idxelements] = L[idxleft]
+            idxleft += 1
+            idxelements += 1
+
+        while idxright < len(R):
+            elements[idxelements] = R[idxright]
+            idxright += 1
+            idxelements += 1
+
+        return
+
+
+
+
+
+
+
+
+
+
+# ocupy spaces
