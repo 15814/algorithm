@@ -46,7 +46,9 @@ def merge_sort(elements: list, left: int, right: int):
     if right <= left:
         return
 
-    mid = int (left + ((right-left)>>1))
+    mid = int (left + ((right-left)>>1)) # Here if don't put the cast type int (),
+        # will have bug in above compare right <= left.
+        # This is a # QUESTION: why?
 
     # print("merge_sort {0} {1} {2}".format(elements,left,mid))
     merge_sort(elements,left,mid)
