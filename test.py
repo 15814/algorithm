@@ -3,9 +3,10 @@ import sorts
 from sorts import bubble_sort
 
 
-def random_array(maxlength: int = 20, presicion: int = 4) -> list:
+def random_array(maxlength: int = 20, presicion: int = 0, maxvalue: int =100) -> list:
     """ The produced array length is in (0,100), the value of elements
         are all in (-100,100), type is float.
+        If the pramater presicion set to 0, the type is int.
     """
 
     import random
@@ -13,8 +14,12 @@ def random_array(maxlength: int = 20, presicion: int = 4) -> list:
     result = []
     length = random.randint(0,maxlength)
 
-    for j in range(length):
-        result.append(round(random.uniform(-1,1)*100,presicion))
+    if presicion > 0:
+        for j in range(length):
+            result.append(round(random.uniform(-1,1)*100,presicion))
+    else:
+        for j in range(length):
+            result.append(random.randint(-maxvalue,maxvalue))
 
     return result
 
