@@ -14,7 +14,7 @@ def random_array(maxlength: int = 20, presicion: int = 0, maxvalue: int =100) ->
     result = []
     length = random.randint(0,maxlength)
 
-    if presicion > 1:
+    if presicion > 0:
         for j in range(length):
             result.append(round(random.uniform(-1,1)*100,presicion))
     else:
