@@ -1,4 +1,7 @@
 
+# use for run some tests on methods
+
+
 def foo(arg1: int =1):
     if hasattr(int,'arg1'):
         print('hasattr')
