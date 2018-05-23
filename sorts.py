@@ -1,4 +1,6 @@
 
+# This script includes some sort methods wirten by me.
+
 def bubble_sort(elements: list) -> list:
     length = len(elements)
 
