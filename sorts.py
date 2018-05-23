@@ -1,4 +1,6 @@
 
+# This script includes some sort methods wirten by me.
+
 def bubble_sort(elements: list) -> list:
     length = len(elements)
 
@@ -104,6 +106,61 @@ def merge(elements: list, left: int, mid: int, right: int):
             idxelements += 1
 
         return
+
+def quicksort(elements: list, left, right):
+    if right <= left+1:
+        return
+
+    num = elements[right-1]
+    lidx,ridx = partion(elements,left,right,num)
+
+    quicksort(elements,left,lidx)
+    quicksort(elements,ridx,right)
+
+
+
+def partion(elements, left, right, num):
+
+    if right > left+1:
+        small = -1
+        big = right
+        cur = 0
+
+        while cur < big:
+            if elements[cur] < num:
+                small += 1
+                elements[small], elements[cur] = elements[cur],elements[small]
+                cur += 1
+            elif elements[cur] > num:
+                big -= 1
+                elements[big], elements[cur] = elements[cur],elements[big]
+            else:
+                cur += 1
+
+        lidx = small + 1
+        ridx = big
+        return lidx,ridx
+
+    return left,right
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

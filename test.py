@@ -1,4 +1,7 @@
 
+
+# some common functions will be used to test a method's correctness.
+
 import sorts
 from sorts import bubble_sort
 
