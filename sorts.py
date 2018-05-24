@@ -115,7 +115,7 @@ def quicksort(elements: list, left, right):
     # If randomly pick the num，then it is called random quicksort
     # This can be done as follow
     import random
-    randindex = random.randint(left,right)
+    randindex = random.randrange(left,right)
     num = elements[randindex]
 
     lidx,ridx = partion(elements,left,right,num)
