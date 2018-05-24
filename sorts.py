@@ -111,7 +111,13 @@ def quicksort(elements: list, left, right):
     if right <= left+1:
         return
 
-    num = elements[right-1]
+    # num = elements[right-1]
+    # If randomly pick the num，then it is called random quicksort
+    # This can be done as follow
+    import random
+    randindex = random.randint(left,right)
+    num = elements[randindex]
+
     lidx,ridx = partion(elements,left,right,num)
 
     quicksort(elements,left,lidx)
