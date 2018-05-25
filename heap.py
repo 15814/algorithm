@@ -26,13 +26,20 @@ def printheap(elements: list):
     layors = math.ceil(math.log2(length+1))
     lastlayornodes = 2**(layors-1)
     maxwidth =  lastlayornodes + (lastlayornodes-1) * 4
-
+    # prespaces = int (maxwidth/2)
     for i in range(layors):
         spacescount = int (maxwidth / (i+1))
-        spaces = ' '* spacescount
+        spaces = ' ' * spacescount
+        halfspaces = ' ' * int (spacescount/2)
+        space4 = ' ' * 4
+        count = 1
         for j in range(2**i-1,2**(i+1)-1):
             if j < length:
-                print(spaces + str(elements[j]),end = '')
+                if i > 1 and count > 1 and count % 2 != 0:
+                        print(halfspaces + str(elements[j]),end = '')
+                else:
+                    print(spaces + str(elements[j]),end = '')
+                count += 1
         print('\n')
 
     return
@@ -79,25 +86,28 @@ def heapify(elems: list):
 
 
 
-def test_heapinsert(elems: list):
+def test_heapinsert(elems: list, testcases: int = 10):
     import random
-    for i in range(10):
+    for i in range(testcases):
         elem = random.randrange(1,100)
         heapinsert(elems,elem)
     printheap(elems)
 
 def test_heap_pop(elems: list):
+    fourspaces = '    '
     while elems:
-        print(heap_pop(elems),end='    ')
+        print(heap_pop(elems),end=fourspaces)
 
     return
 
+def heap_sort(elems: list):
 
+    pass
 
 
 def main():
     elems =[]
-    test_heapinsert(elems)
+    test_heapinsert(elems,20)
     test_heap_pop(elems)
 
 if __name__ == '__main__':
