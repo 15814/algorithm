@@ -30,6 +30,7 @@ def random_array(maxlength: int = 20, presicion: int = 0, maxvalue: int =100) ->
 def equal_list(list1: list, list2: list) -> bool:
     """ decide whether two lists is equal ?
         If equal return true ; else return false.
+        Note that if this function meet the first unequal pair, it will return and don't do the following compare operation 
      """
 
     if len(list1) != len(list2):
