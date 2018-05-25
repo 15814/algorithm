@@ -105,15 +105,34 @@ def test_heap_pop(elems: list):
 
     return
 
-def heap_sort(elems: list):
+def heapsort(elems: list):
+    length = len(elems)
+    if length < 2:
+        return
 
-    pass
+    lst = [0]*length
+    for i in range(length):
+        lst[length-1-i] = heap_pop(elems)
+
+    elems = lst[:]
+    return
+
+
+def test_heapsort(testcases: int = 5000):
+    import test
+    for i in range(testcases):
+        lst = test.random_array()
+        heaplst = lst[:]
+        heapsort(heaplst)
+        test.equal_list(heaplst,sorted(lst))
+
 
 
 def main():
     elems =[]
-    test_heapinsert(elems,20)
+    test_heapinsert(elems)
     test_heap_pop(elems)
+    test_heapsort()
 
 if __name__ == '__main__':
     main()
