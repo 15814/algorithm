@@ -20,6 +20,11 @@ def heapinsert(elements: list, elem):
 
 
 def printheap(elements: list):
+    # printheap() 在命令行下的打印受限于每行最大80字符，
+    # 不应该去模仿打印理想的树图，
+    # 应该像是GitHub打印它的branch图那样才有可能在节点数很多的时候依然具备可读性
+    # 这里的 printheap 只在节点数小于20时有不错的效果，需要改进
+
     import math
 
     length = len(elements)
