@@ -1,11 +1,15 @@
 
+
+# some common functions will be used to test a method's correctness.
+
 import sorts
 from sorts import bubble_sort
 
 
-def random_array(maxlength: int = 20, presicion: int = 4) -> list:
+def random_array(maxlength: int = 20, presicion: int = 0, maxvalue: int =100) -> list:
     """ The produced array length is in (0,100), the value of elements
         are all in (-100,100), type is float.
+        If the pramater presicion set to 0, the type is int.
     """
 
     import random
@@ -13,8 +17,12 @@ def random_array(maxlength: int = 20, presicion: int = 4) -> list:
     result = []
     length = random.randint(0,maxlength)
 
-    for j in range(length):
-        result.append(round(random.uniform(-1,1)*100,presicion))
+    if presicion > 0:
+        for j in range(length):
+            result.append(round(random.uniform(-1,1)*100,presicion))
+    else:
+        for j in range(length):
+            result.append(random.randint(-maxvalue,maxvalue))
 
     return result
 
@@ -22,6 +30,7 @@ def random_array(maxlength: int = 20, presicion: int = 4) -> list:
 def equal_list(list1: list, list2: list) -> bool:
     """ decide whether two lists is equal ?
         If equal return true ; else return false.
+        Note that if this function meet the first unequal pair, it will return and don't do the following compare operation 
      """
 
     if len(list1) != len(list2):
@@ -45,7 +54,14 @@ def test_sorts(testmethod: 'function' = bubble_sort,testcases: 'int' =3000) -> b
     for i in range(testcases):
         testlist = random_array()
         copylist = testlist[:]
-        result_test = testmethod(copylist)
+
+        # a little stupid in here
+        if testmethod == sorts.merge_sort:
+            testmethod(copylist,0,len(copylist)-1)
+            result_test = copylist[:]
+        else:
+            result_test = testmethod(copylist)
+
         result_true = sorted(testlist)
         if not equal_list(result_test,result_true):
             work = 0
@@ -67,12 +83,18 @@ def test_sorts(testmethod: 'function' = bubble_sort,testcases: 'int' =3000) -> b
 
 def main():
     testcases = 3000
-    testmethod = sorts.bubble_sort
+    testmethod = sorts.merge_sort
     test_sorts(testmethod)
 
-    lst = [-79, 46, -47, 34, -92, -66, 16, -87, -88, -22]
-    print(lst)
-    print(testmethod(lst))
+    # sigel testmethod
+    # lst = [i for i in range(10,-1,-2)]
+    # print("input: ",lst)
+    # if testmethod == sorts.merge_sort:
+    #     testmethod(lst,0,len(lst)-1)
+    #     print(lst)
+    # else:
+    #     print(testmethod(lst))
+
 
 
 
