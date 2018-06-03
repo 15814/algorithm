@@ -62,7 +62,7 @@ def testprintmatrix():
     matrix = [[0 for x in range(cols)] for y in range(rows)]
     for i in range(rows):
         for j in range(cols):
-            matrix[i][j] = 4 * i + j + 1
+            matrix[i][j] = cols * i + j + 1
     printmatrix(matrix)
 
     # case 4: one column matrix
@@ -70,7 +70,7 @@ def testprintmatrix():
     matrix = [[0 for x in range(cols)] for y in range(rows)]
     for i in range(rows):
         for j in range(cols):
-            matrix[i][j] = 4 * i + j + 1
+            matrix[i][j] = cols * i + j + 1
     printmatrix(matrix)
 
     # case 5: rectangle matrix
@@ -78,7 +78,8 @@ def testprintmatrix():
     matrix = [[0 for x in range(cols)] for y in range(rows)]
     for i in range(rows):
         for j in range(cols):
-            matrix[i][j] = 4 * i + j + 1
+            matrix[i][j] = cols * i + j + 1
+        print('matrix[i]: ',matrix[i])
     printmatrix(matrix)
 
     # case 6: square matrix
@@ -86,9 +87,9 @@ def testprintmatrix():
     matrix = [[0 for x in range(cols)] for y in range(rows)]
     for i in range(rows):
         for j in range(cols):
-            matrix[i][j] = 4 * i + j + 1
+            matrix[i][j] = cols * i + j + 1
     printmatrix(matrix)
-    
+
 
 
 def main():
