@@ -25,6 +25,18 @@ def printmatrix(matrix):
         rightrow = rows - 1
         rightcol = cols - 1
 
+        if rows == 1:
+            for i in range(cols):
+                print(matrix[0][i], end=' ')
+            print()
+            return
+
+        if cols == 1:
+            for i in range(rows):
+                print(matrix[i][0], end=' ')
+            print()
+            return
+
         while(leftrow <= rightrow):
             printrectangle(matrix, leftrow, leftcol, rightrow, rightcol)
             leftrow += 1
