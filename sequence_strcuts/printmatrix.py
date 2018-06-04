@@ -5,7 +5,17 @@
 
 
 def printrectangle(matrix, leftrow, leftcol, rightrow, rightcol):
-    if leftrow <= rightrow:
+    if leftrow == rightrow or leftcol == rightcol:
+        if leftrow == rightrow and leftcol == rightcol:
+            print(matrix[leftrow][leftcol])
+
+        elif leftrow == rightrow:
+            for i in range(leftcol, rightcol):
+                print(matrix[leftrow][i], end=' ')
+            else:
+                for i in range(leftrow,rightrow):
+                    print(matrix[i][leftcol], end=' ')
+    else:
         for i in range(leftcol, rightcol):
             print(matrix[leftrow][i], end=' ')
         for i in range(leftrow, rightrow):
