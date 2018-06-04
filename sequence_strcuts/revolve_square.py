@@ -51,7 +51,10 @@ def revolve(matrix, lrow, lcol, rrow, rcol):
 
         matrix[lcol+i][rcol] = curvalue
 
-
+    # 相对的 index 非常重要，在这里因为忽略相对的 index，
+    # 将 curvalue = matrix[lrow][lcol+i] 错写成 curvalue = matrix[lrow][i]，改了好久才发现错误。
+    # 不能急，特别是 涉及到 index 的时候，很容易错，要确定好 index 之后再写，
+    # 不要匆忙开始，index 没有理清，之后你就会一头雾水，不知所措！
 
 
 def test(size = 10):
