@@ -8,13 +8,12 @@ def printrectangle(matrix, leftrow, leftcol, rightrow, rightcol):
     if leftrow == rightrow or leftcol == rightcol:
         if leftrow == rightrow and leftcol == rightcol:
             print(matrix[leftrow][leftcol])
-
-        elif leftrow == rightrow:
-            for i in range(leftcol, rightcol):
+        if leftrow == rightrow:
+            for i in range(leftcol, rightcol+1):
                 print(matrix[leftrow][i], end=' ')
-            else:
-                for i in range(leftrow,rightrow):
-                    print(matrix[i][leftcol], end=' ')
+        else:
+            for i in range(leftrow,rightrow+1):
+                print(matrix[i][leftcol], end=' ')
     else:
         for i in range(leftcol, rightcol):
             print(matrix[leftrow][i], end=' ')
@@ -53,6 +52,8 @@ def printmatrix(matrix):
             leftcol += 1
             rightrow -= 1
             rightcol -= 1
+            print('{ message: }')
+            print(leftrow,leftcol,rightrow,rightcol)
 
         print('\n')
     return
@@ -61,10 +62,12 @@ def printmatrix(matrix):
 def testprintmatrix():
     # case 1: empty matrix
     matrix = []
+    print('{ message: case 1: empty matrix}')
     printmatrix(matrix);
 
     # case 2: have a empty element matrix, len = 1
     matrix =[[]]
+    print('{ message: case 2: have a empty element matrix, len = 1}')
     printmatrix(matrix)
 
     # case 3: one row matrix
@@ -73,6 +76,8 @@ def testprintmatrix():
     for i in range(rows):
         for j in range(cols):
             matrix[i][j] = cols * i + j + 1
+
+    print('{ message: case 3: one row matrix}')
     printmatrix(matrix)
 
     # case 4: one column matrix
@@ -81,23 +86,31 @@ def testprintmatrix():
     for i in range(rows):
         for j in range(cols):
             matrix[i][j] = cols * i + j + 1
+    print('{ message: case 4: one column matrix}')
     printmatrix(matrix)
 
+
+
     # case 5: rectangle matrix
-    cols, rows = 3, 6;
+    matrix = []
+    cols, rows = 5, 7;
     matrix = [[0 for x in range(cols)] for y in range(rows)]
     for i in range(rows):
         for j in range(cols):
             matrix[i][j] = cols * i + j + 1
         print('matrix[i]: ',matrix[i])
+    print('{ message: rectangle matrix}')
     printmatrix(matrix)
+    # print('printrectangle(matrix): ',printrectangle(matrix,0,0,5,2))
 
     # case 6: square matrix
-    cols, rows = 4, 4;
+    cols, rows = 8, 8;
     matrix = [[0 for x in range(cols)] for y in range(rows)]
     for i in range(rows):
         for j in range(cols):
             matrix[i][j] = cols * i + j + 1
+        print('matrix[i]: ',matrix[i])
+    print('{ message: square matrix}')
     printmatrix(matrix)
 
 
