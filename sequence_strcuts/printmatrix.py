@@ -11,7 +11,7 @@ def printrectangle(matrix, leftrow, leftcol, rightrow, rightcol):
         for i in range(leftrow, rightrow):
             print(matrix[i][rightcol], end=' ')
         for i in range(rightcol, leftcol, -1):
-            print(matrix[rightcol][i], end=' ')
+            print(matrix[rightrow][i], end=' ')
         for i in range(rightrow, leftrow, -1):
             print(matrix[i][leftcol], end=' ')
 
