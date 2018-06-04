@@ -47,7 +47,7 @@ def printmatrix(matrix):
             print()
             return
 
-        while(leftrow <= rightrow):
+        while(leftrow <= rightrow and leftcol <= rightcol):
             printrectangle(matrix, leftrow, leftcol, rightrow, rightcol)
             leftrow += 1
             leftcol += 1
