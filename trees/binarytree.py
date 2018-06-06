@@ -9,16 +9,16 @@ class TreeNode(object):
         self.rchild = None
 
 
-class Tree(object):
+class BinaryTree(object):
     """docstring for Tree."""
 
     def __init__(self, data = None):
-        super(Tree, self).__init__()
+        super(BinaryTree, self).__init__()
         self.root = TreeNode(data)
 
 
     def addchild(self, lchild = None, rchild = None):
-        
+
         pass
 
 
