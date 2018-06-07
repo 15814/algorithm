@@ -1,4 +1,8 @@
 
+
+import collections
+
+
 class BiTreeNode(object):
     """docstring for Node."""
 
@@ -58,9 +62,58 @@ def postorder_recur(root):
 
 
 def preorder_unrecur(root):
-    
-    pass
+    st = collections.deque()
+    if root:
+        st.append(root)
+        while st:
+            popnode = st.pop()
+            print(popnode.data, end = ' ')
 
+            if popnode.right:
+                st.append(popnode.right)
+            if popnode.left:
+                st.append(popnode.left)
+
+
+def inoreder_unrecur(root):
+    st = collections.deque()
+    s = set()
+
+    if root:
+        st.append(root)
+
+        while st:
+            popnode = st.pop()
+            if popnode not in s:
+                if popnode.right:
+                    st.append(popnode.right)
+                s.add(popnode)
+                st.append(popnode)
+                if popnode.left:
+                    st.append(popnode.left)
+            else:
+                print(popnode.data, end = ' ')
+
+
+def postorder_unrecur(root):
+
+    st = collections.deque()
+    s = set()
+
+    if root:
+        st.append(root)
+
+        while st:
+            popnode = st.pop()
+            if popnode not in s:
+                st.append(popnode)
+                s.add(popnode)
+                if popnode.right:
+                    st.append(popnode.right)
+                if popnode.left:
+                    st.append(popnode.left)
+            else:
+                print(popnode.data, end = ' ')
 
 
 
@@ -82,6 +135,18 @@ def main():
 
     print('{ message: postorder_recur}')
     postorder_recur(btree.root)
+    print()
+
+    print('{ message: preorder_unrecur}')
+    preorder_unrecur(btree.root)
+    print()
+
+    print('{ message: inoreder_unrecur}')
+    inoreder_unrecur(btree.root)
+    print()
+
+    print('{ message: postorder_unrecur}')
+    postorder_unrecur(btree.root)
     print()
 
 
