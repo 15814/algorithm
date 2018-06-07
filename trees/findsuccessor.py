@@ -3,9 +3,9 @@
 
 class Node(object):
     """docstring for Node."""
-    def __init__(self, value = None, left = None, right = None, parent = None):
+    def __init__(self, data = None, left = None, right = None, parent = None):
         super(Node, self).__init__()
-        self.value = value
+        self.data = data
         self.left = left
         self.right = right
         self.parent = parent
@@ -60,30 +60,34 @@ def test():
     head.right.right.parent = head.right
 
     test = head.left.left
-    print(test.value , " next: " , findsuccessor(test).value)
+    print(test.data , " next: " , findsuccessor(test).data)
     test = head.left.left.right
-    print(test.value , " next: " , findsuccessor(test).value)
+    print(test.data , " next: " , findsuccessor(test).data)
     test = head.left
-    print(test.value , " next: " , findsuccessor(test).value)
+    print(test.data , " next: " , findsuccessor(test).data)
     test = head.left.right
-    print(test.value , " next: " , findsuccessor(test).value)
+    print(test.data , " next: " , findsuccessor(test).data)
     test = head.left.right.right
-    print(test.value , " next: " , findsuccessor(test).value)
+    print(test.data , " next: " , findsuccessor(test).data)
     test = head
-    print(test.value , " next: " , findsuccessor(test).value)
+    print(test.data , " next: " , findsuccessor(test).data)
     test = head.right.left.left
-    print(test.value , " next: " , findsuccessor(test).value)
+    print(test.data , " next: " , findsuccessor(test).data)
     test = head.right.left
-    print(test.value , " next: " , findsuccessor(test).value)
+    print(test.data , " next: " , findsuccessor(test).data)
     test = head.right
-    print(test.value , " next: " , findsuccessor(test).value)
+    print(test.data , " next: " , findsuccessor(test).data)
     test = head.right.right # 10's next is null
-    print(test.value , " next: " , findsuccessor(test).value)
+    print(test.data , " next: " , findsuccessor(test).data)
 
-
+    import binarytree
+    binarytree.preorder_unrecur(head)
+    binarytree.inoreder_unrecur2(head)
 
 def main():
     test()
+
+
 
 if __name__ == '__main__':
     main()
