@@ -154,6 +154,11 @@ def postorder_unrecur2(root):
         print()
 
 
+def postorder_unrecur3(root):
+    # request: Auxiliary space complexity is O(1)
+    pass 
+
+
 
 def main():
     btree = BiTree()
