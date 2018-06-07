@@ -25,18 +25,16 @@ def findsuccessor(targetnode):
         return targetnode.parent
 
     else:
-        node = targetnode.parent
-        while node.parent and node.parent.left and node.parent.left != node:
-            if not node.parent.parent:
-                if node.parent.left == node:
-                    return node
-                else:
-                    return Node()
+        node = targetnode
+        parent = targetnode.parent
+        while parent and parent.left != node:
+            node = parent
+            parent = parent.parent
 
-
-            node = node.parent
-
-        return node.parent
+        if parent:
+            return parent
+        else:
+            return Node()
 
 
 def test():
