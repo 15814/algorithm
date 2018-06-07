@@ -75,6 +75,7 @@ def preorder_unrecur(root):
                 st.append(popnode.left)
     print()
 
+
 def inoreder_unrecur(root):
     st = collections.deque()
     s = set()
@@ -100,7 +101,6 @@ def inoreder_unrecur2(root):
     st = collections.deque()
     if root:
         head = root
-
         while st or head:
             if head:
                 st.append(head)
@@ -118,10 +118,8 @@ def postorder_unrecur(root):
 
     st = collections.deque()
     s = set()
-
     if root:
         st.append(root)
-
         while st:
             popnode = st.pop()
             if popnode not in s:
@@ -136,7 +134,24 @@ def postorder_unrecur(root):
     print()
 
 
+def postorder_unrecur2(root):
 
+    st = collections.deque()
+    st2 = collections.deque()
+    if root:
+        st.append(root)
+        while st:
+            popnode = st.pop()
+            # print(popnode.data, end = ' ')
+            st2.append(popnode.data)
+            if popnode.left:
+                st.append(popnode.left)
+            if popnode.right:
+                st.append(popnode.right)
+
+        while st2:
+            print(st2.pop(), end = ' ')
+        print()
 
 
 
@@ -155,7 +170,7 @@ def main():
 
     print('{ message: postorder_recur}')
     postorder_recur(root)
-    print()
+    print('---------\n')
 
     print('{ message: preorder_unrecur}')
     preorder_unrecur(root)
@@ -167,7 +182,13 @@ def main():
     postorder_unrecur(root)
 
     print('inoreder_unrecur2(): ')
-    print(inoreder_unrecur2(root))
+    inoreder_unrecur2(root)
+
+    print('{ message: postorder_unrecur2}')
+    postorder_unrecur2(root)
+
+
+
 if __name__ == '__main__':
     main()
 
