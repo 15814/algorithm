@@ -6,11 +6,11 @@ import collections
 class BiTreeNode(object):
     """docstring for Node."""
 
-    def __init__(self, data = None):
+    def __init__(self, data = None, left = None, right = None):
         super(BiTreeNode, self).__init__()
         self.data = data
-        self.left = None
-        self.right = None
+        self.left = left
+        self.right = right
 
 
 class BiTree(object):
@@ -73,7 +73,7 @@ def preorder_unrecur(root):
                 st.append(popnode.right)
             if popnode.left:
                 st.append(popnode.left)
-
+    print()
 
 def inoreder_unrecur(root):
     st = collections.deque()
@@ -93,6 +93,25 @@ def inoreder_unrecur(root):
                     st.append(popnode.left)
             else:
                 print(popnode.data, end = ' ')
+    print()
+
+
+def inoreder_unrecur2(root):
+    st = collections.deque()
+    if root:
+        head = root
+
+        while st or head:
+            if head:
+                st.append(head)
+                head = head.left
+            else:
+                popnode = st.pop()
+                print(popnode.data, end=' ')
+                head = popnode.right
+
+    print()
+
 
 
 def postorder_unrecur(root):
@@ -114,7 +133,7 @@ def postorder_unrecur(root):
                     st.append(popnode.left)
             else:
                 print(popnode.data, end = ' ')
-
+    print()
 
 
 
@@ -124,33 +143,31 @@ def postorder_unrecur(root):
 def main():
     btree = BiTree()
     btree.exampletree()
+    root = btree.root
     # print('btree.root.data: ',btree.root.data)
     print('{ message: preorder_recur}')
-    preorder_recur(btree.root)
+    preorder_recur(root)
     print()
 
     print('{ message: inorder_recur}')
-    inorder_recur(btree.root)
+    inorder_recur(root)
     print()
 
     print('{ message: postorder_recur}')
-    postorder_recur(btree.root)
+    postorder_recur(root)
     print()
 
     print('{ message: preorder_unrecur}')
-    preorder_unrecur(btree.root)
-    print()
+    preorder_unrecur(root)
 
     print('{ message: inoreder_unrecur}')
-    inoreder_unrecur(btree.root)
-    print()
+    inoreder_unrecur(root)
 
     print('{ message: postorder_unrecur}')
-    postorder_unrecur(btree.root)
-    print()
+    postorder_unrecur(root)
 
-
-
+    print('inoreder_unrecur2(): ')
+    print(inoreder_unrecur2(root))
 if __name__ == '__main__':
     main()
 
