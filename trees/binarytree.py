@@ -156,7 +156,23 @@ def postorder_unrecur2(root):
 
 def postorder_unrecur3(root):
     # request: Auxiliary space complexity is O(1)
-    pass 
+    st = collections.deque()
+
+    if root:
+        st.append(root)
+        pre = root
+        while st:
+            head = st.pop()
+            if (not head.left and not head.right) or head.left == pre or head.right == pre:
+                print(head.data, end = ' ')
+
+            else:
+                st.append(head)
+                if head.right:
+                    st.append(head.right)
+                if head.left:
+                    st.append(head.left)
+            pre = head
 
 
 
@@ -192,6 +208,8 @@ def main():
     print('{ message: postorder_unrecur2}')
     postorder_unrecur2(root)
 
+    print('{ message: postorder_unrecur3}')
+    postorder_unrecur3(root)
 
 
 if __name__ == '__main__':
