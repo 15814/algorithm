@@ -23,6 +23,29 @@ def serialbypre(root):
     return result
 
 
+def deserialpre(string):
+    root = Node()
+    if not string or string[0] == '#':
+        return root
+    else:
+        lst = preprocess(string)
+
+
+def reconstrcutbypre(lst, begin, curnode):
+
+    if lst[begin+1] != '#':
+        left = Node(lst[begin+1])
+        curnode.left = left
+        begin += 1
+        curnode = left
+        reconstrcutbypre(lst, begin, curnode)
+    else:
+        curnode.left = None
+
+
+
+
+
 def preprocess(string):
     lst =[]
     begin = 0
