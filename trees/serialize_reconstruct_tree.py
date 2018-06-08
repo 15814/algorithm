@@ -1,5 +1,6 @@
 
 import collections
+import binarytree
 
 class Node(object):
     """docstring for Node."""
@@ -175,13 +176,90 @@ def getexampletree():
     return head
 
 
+def test():
+    head = Node()
+
+
+    pre = serialbypre(head)
+    print("serialize tree by pre-order: " + pre)
+    head = deserialprestring(pre)
+    print("reconstruct tree by pre-order, ")
+    binarytree.levelorder(head)
+
+    level = serial_level(head)
+    print("serialize tree by level: " + level)
+    head = deserial_levelstring(level)
+    print("reconstruct tree by level, ")
+    binarytree.levelorder(head)
+
+    print("====================================")
+
+    head = Node(1)
+
+
+    pre = serialbypre(head)
+    print("serialize tree by pre-order: " + pre)
+    head = deserialprestring(pre)
+    print("reconstruct tree by pre-order, ")
+    binarytree.levelorder(head)
+
+    level = serial_level(head)
+    print("serialize tree by level: " + level)
+    head = deserial_levelstring(level)
+    print("reconstruct tree by level, ")
+    binarytree.levelorder(head)
+
+    print("====================================")
+
+    head = Node(1)
+    head.left = Node(2)
+    head.right = Node(3)
+    head.left.left = Node(4)
+    head.right.right = Node(5)
+
+
+    pre = serialbypre(head)
+    print("serialize tree by pre-order: " + pre)
+    head = deserialprestring(pre)
+    print("reconstruct tree by pre-order, ")
+    binarytree.levelorder(head)
+
+    level = serial_level(head)
+    print("serialize tree by level: " + level)
+    head = deserial_levelstring(level)
+    print("reconstruct tree by level, ")
+    binarytree.levelorder(head)
+
+    print("====================================")
+
+    head = Node(100)
+    head.left = Node(21)
+    head.left.left = Node(37)
+    head.right = Node(-42)
+    head.right.left = Node(0)
+    head.right.right = Node(666)
+
+
+    pre = serialbypre(head)
+    print("serialize tree by pre-order: " + pre)
+    head = deserialprestring(pre)
+    print("reconstruct tree by pre-order, ")
+    binarytree.levelorder(head)
+
+    level = serial_level(head)
+    print("serialize tree by level: " + level)
+    head = deserial_levelstring(level)
+    print("reconstruct tree by level, ")
+    binarytree.levelorder(head)
+
+    print("====================================")
 
 
 
 
 
 def main():
-    import binarytree
+
 
     root = getexampletree()
     print('{ message: preorder_unrecur}')
@@ -204,6 +282,10 @@ def main():
     print('{ message: deserial_level}')
     node = deserial_levelstring(serial_levelstr)
     binarytree.levelorder(node)
+
+    print('====================\n')
+    test()
+
 
 if __name__ == '__main__':
     main()
