@@ -1,4 +1,5 @@
 
+import collections
 
 class Node(object):
     """docstring for Node."""
@@ -22,28 +23,49 @@ def serialbypre(root):
 
     return result
 
+# 思路混乱时，没有想清楚就开始写代码时的遗物
+# def deserialpre(string):
+#     root = Node()
+#     if not string or string[0] == '#':
+#         return root
+#     else:
+#         lst = preprocess(string)
 
-def deserialpre(string):
+
+# def reconstrcutbypre(lst, begin, curnode):
+#
+#     if lst[begin+1] != '#':
+#         left = Node(lst[begin+1])
+#         curnode.left = left
+#         begin += 1
+#         curnode = left
+#         reconstrcutbypre(lst, begin, curnode)
+#     else:
+#         curnode.left = None
+# ------------
+
+
+def deserialprestring(string):
     root = Node()
     if not string or string[0] == '#':
         return root
     else:
-        lst = preprocess(string)
+        lst = string.split('_')
+        deque = collections.deque()
+        for data in lst:
+            node = Node(data)
+            deque.append(node)
+
+        return deserialpre(deque,root)
 
 
-def reconstrcutbypre(lst, begin, curnode):
-
-    if lst[begin+1] != '#':
-        left = Node(lst[begin+1])
-        curnode.left = left
-        begin += 1
-        curnode = left
-        reconstrcutbypre(lst, begin, curnode)
-    else:
-        curnode.left = None
-
-
-
+def deserialpre(deque, root):
+    root = deque.popleft()
+    if root.data == '#':
+        return None
+    root.left = deserialpre(deque,root.left)
+    root.right = deserialpre(deque,root.right)
+    return root
 
 
 def preprocess(string):
@@ -96,10 +118,19 @@ def getexampletree():
 
 
 def main():
+    import binarytree
+
     root = getexampletree()
-    print(serialbypre(root))
+    print('{ message: preorder_unrecur}')
+    binarytree.preorder_unrecur(root)
+
+    serialstring = serialbypre(root)
+    print(serialstring)
 
 
+    reconroot = deserialprestring(serialstring)
+    print('{ message: }')
+    binarytree.preorder_unrecur(reconroot)
 
 
 
