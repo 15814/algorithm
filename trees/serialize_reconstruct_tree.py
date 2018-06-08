@@ -23,6 +23,24 @@ def serialbypre(root):
     return result
 
 
+def preprocess(string):
+    lst =[]
+    begin = 0
+    while begin < len(string):
+        if string[begin] == '#':
+            lst.append('#')
+            begin = begin + 2
+        else:
+            end = begin + 1
+            while end < len(string) and string[end] != '_':
+                end += 1
+            data = int (string[begin:end])
+            lst.append(data)
+            begin = end + 1
+
+    return lst
+
+
 
 def getexampletree():
     head = Node(6)
