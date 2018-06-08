@@ -188,7 +188,7 @@ def levelorder(root):
                 queue.append(node.left)
             if node.right:
                 queue.append(node.right)
-
+    print()
 
 
 def main():

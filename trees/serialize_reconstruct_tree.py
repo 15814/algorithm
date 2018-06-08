@@ -68,6 +68,28 @@ def deserialpre(deque, root):
     return root
 
 
+def serial_level(root):
+    queue = collections.deque()
+    string =''
+    if root:
+        queue.append(root)
+        while queue:
+            node = queue.popleft()
+            string += str(node.data) + '_'
+            if node.data != '#':
+                if node.left:
+                    queue.append(node.left)
+                else:
+                    queue.append(Node('#'))
+                if node.right:
+                    queue.append(node.right)
+                else:
+                    queue.append(Node('#'))
+    else:
+        string += '#'
+    return string
+
+
 def preprocess(string):
     lst =[]
     begin = 0
@@ -132,6 +154,10 @@ def main():
     print('{ message: }')
     binarytree.preorder_unrecur(reconroot)
 
+    print('{ message: level travel}')
+    binarytree.levelorder(root)
+    print('{ message: serial_level}')
+    print(serial_level(root))
 
 
 
