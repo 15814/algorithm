@@ -175,6 +175,21 @@ def postorder_unrecur3(root):
             pre = head
 
 
+def levelorder(root):
+    queue = collections.deque()
+
+    if root:
+        queue.append(root)
+
+        while queue:
+            node = queue.popleft()
+            print(node.data, end=' ')
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+
+
 
 def main():
     btree = BiTree()
