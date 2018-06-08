@@ -90,6 +90,47 @@ def serial_level(root):
     return string
 
 
+def deserial_levelstring(string):
+    root = Node()
+    if not string or string[0] == '#':
+        return root
+    else:
+        lst = string.split('_')
+        deque = collections.deque(lst)
+        return deserial_level(deque, root)
+
+
+def deserial_level(deque, root):
+    if deque:
+        root = Node(deque.popleft())
+        node = root
+        parents = collections.deque()
+        parents.append(root)
+
+        while deque and parents:
+            parent = parents.popleft()
+            leftdata = deque.popleft()
+            if leftdata != '#':
+                left = Node(leftdata)
+                parent.left = left
+                parents.append(left)
+            else:
+                parent.left = None
+
+            if not deque:
+                return root
+
+            rightdata = deque.popleft()
+            if rightdata != '#':
+                right = Node(rightdata)
+                parent.right = right
+                parents.append(right)
+            else:
+                parent.right = None
+
+    return root
+
+
 def preprocess(string):
     lst =[]
     begin = 0
@@ -157,11 +198,12 @@ def main():
     print('{ message: level travel}')
     binarytree.levelorder(root)
     print('{ message: serial_level}')
-    print(serial_level(root))
+    serial_levelstr = serial_level(root)
+    print(serial_levelstr)
 
-
-
-
+    print('{ message: deserial_level}')
+    node = deserial_levelstring(serial_levelstr)
+    binarytree.levelorder(node)
 
 if __name__ == '__main__':
     main()
