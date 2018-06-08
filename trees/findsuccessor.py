@@ -84,6 +84,8 @@ def test():
     binarytree.preorder_unrecur(head)
     binarytree.inoreder_unrecur2(head)
 
+    binarytree.levelorder(head)
+
 def main():
     test()
 
