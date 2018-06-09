@@ -150,6 +150,51 @@ def preprocess(string):
     return lst
 
 
+def serialbyin(root):
+    string = ''
+    if root:
+        if not root.left and not root.right:
+             string += '#_' + str(root.data) + '_' + '#_'
+
+        if root.left and not root.right:
+            string += serialbyin(root.left) + str(root.data) + '_' + '#_'
+
+        if root.right and not root.left:
+            string += '#_' + str(root.data) + '_' + serialbyin(root.right)
+
+        if root.left and root.right:
+            string += serialbyin(root.left) + str(root.data) + '_' + serialbyin(root.right)
+
+        return string
+
+
+def serialbyin2(root):
+    if root:
+        return serialbyin2(root.left) + str(root.data) + '_'  \
+               + serialbyin2(root.right)
+
+    else:
+        return '#_'
+
+
+def deserialinstring(string):
+    root = Node()
+    if string and string[1] != '#':
+        lst = string.split('_')
+        deque = collections.deque(lst)
+        deserialin(deque, root)
+        return root
+    else:
+        return root
+
+
+def deserialin(deque, root):
+    leftdata = deque.popleft()
+    # 　而仅根据（带空指针的）中序遍历，是不能重建二叉树的。比如，上面这棵树的中序遍历为 #2#1#3#4#。事实上可以证明，任何一棵二叉树的中序遍历结果，都会是空指针与树中结点交替出现的形式，所以空指针没有提供任何额外的信息。
+    # 具体见 https://blog.csdn.net/gettogetto/article/details/70244827 好文章，关于二叉树序列化和重建的各种事情都讲得非常清楚、全面！
+
+
+
 
 def getexampletree():
     head = Node(6)
@@ -283,8 +328,16 @@ def main():
     node = deserial_levelstring(serial_levelstr)
     binarytree.levelorder(node)
 
+    print('{ message: serialbyin}')
+    print(serialbyin(root))
+
+    print('{ message: serialbyin2}')
+    print(serialbyin2(root))
+
     print('====================\n')
-    test()
+
+
+    # test()
 
 
 if __name__ == '__main__':
