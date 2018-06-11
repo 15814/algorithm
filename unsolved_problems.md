@@ -28,9 +28,9 @@ public Node(int data) { this.value = data; }
 
 ## BiTree
 
-1 后序遍历非递归写法
 
 
+2 isbst_recur
 
 
 
