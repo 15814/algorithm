@@ -48,7 +48,17 @@ else:
 *   加密方面有 MD5,SHA.
 *   查找哈希算法：lookup3，Murmur3，FarmHash
 
-[更多关于哈希函数介绍](http://www.alloyteam.com/2017/05/hash-functions-introduction/)
+[更多关于哈希函数介绍和比较](http://www.alloyteam.com/2017/05/hash-functions-introduction/)
+
+哈希函数的性质：
+
+一个函数H(X)=Y被称为Hash函数，iff
+
+* 随机性：输出Y是均匀分布的
+* 单向性：给定Y求X是不可行的
+* 无爪性：无法有效找到不同X1,X2，使得H(X1)=H(X2)
+* 有效性：能够快速计算
+
 
 #### 2 哈希表
 
