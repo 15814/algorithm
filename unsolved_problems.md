@@ -32,7 +32,7 @@ public Node(int data) { this.value = data; }
 
 2 isbst_recur
 
-
+3 已知一棵完全二叉树，求其节点的个数 要求:时间复杂度低于O(N)，N为这棵树的节点个数
 
 
 
