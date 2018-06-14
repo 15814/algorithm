@@ -1,5 +1,15 @@
 
 
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [待写出解决代码的题目](#待写出解决代码的题目)
+	- [链表](#链表)
+	- [BiTree](#bitree)
+	- [Hash](#hash)
+
+<!-- /TOC -->
+
+
 # 待写出解决代码的题目
 
 ## 链表
