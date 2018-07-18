@@ -25,4 +25,7 @@ class Solution:
             head.next = None
 
             return prev
+
+# recursive Solution
+
             
