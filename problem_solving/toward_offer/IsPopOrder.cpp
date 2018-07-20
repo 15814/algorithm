@@ -25,11 +25,11 @@ public:
 
             if (st.top()!= popV[i]) {
                 bool found = false;
-                for (int i = idx; i < pushV.size(); i++) {
-                    st.push(pushV[i]);
-                    if (pushV[i] == popV[i]) {
+                for (int j = idx; j < pushV.size(); j++) {
+                    st.push(pushV[j]);
+                    if (pushV[j] == popV[i]) {
                         found = true;
-                        idx = i+1;
+                        idx = j+1;
                         break;
                     }
                 }
