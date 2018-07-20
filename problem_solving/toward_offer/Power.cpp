@@ -25,10 +25,12 @@ public:
         if (ex == 1) {
             return base;
         }
+        double tmp;
+        tmp = recur_power(base,ex/2);
         if (ex % 2 == 0) {
-            return pow(recur_power(base,ex/2),2);
+             return tmp * tmp;
         }else{
-            return pow(recur_power(base,ex/2),2) * base;
+            return tmp * tmp * base;
         }
     }
 };
