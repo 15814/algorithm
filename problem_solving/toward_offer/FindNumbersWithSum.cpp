@@ -9,21 +9,18 @@ public:
     vector<int> FindNumbersWithSum(vector<int> array,int sum) {
 
         std::vector<int> result;
-        unsigned int sep;
 
-        bool found = false;
-        for (size_t i = 0; i < array.size(); i++) {
-            if (array[i] >= sum) {
-                found = true;
-                sep = i;
-                break;
-            }
-        }
-        if (!found) {
-            return result;
+        unsigned int sep = 0;
+        while (sep < array.size() && array[sep] < sum) {
+            ++sep;
         }
 
-        for (size_t i = 0; i < sep; i++) {
+        int sep2 = 0;
+        while (sep2 < array.size() && array[sep2] <= 0) {
+            ++sep2;
+        }
+
+        for (size_t i = 0; i < sep2; i++) {
             for (size_t j = sep; j < array.size(); j++) {
                 if (array[i] + array[j] >= sum) {
                     if (array[i] + array[j] == sum) {
@@ -34,6 +31,21 @@ public:
                 }
             }
         }
+
+        // [sep2,sep)
+        for (size_t i = sep2; i < sep; i++) {
+            for (size_t j = i+1; j < sep; j++) {
+                if (array[i] + array[j] >= sum) {
+                    if (array[i] + array[j] == sum) {
+                        result.push_back(array[i]);
+                        result.push_back(array[j]);
+                    }
+                    break;
+                }
+            }
+        }
+
+
 
         if (result.size() <= 2) {
             return result;
