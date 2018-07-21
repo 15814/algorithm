@@ -32,6 +32,7 @@ public:
 // 解法 2 主要是为了秀操作，寻找第 k（k=size/2) 大的数字，然后遍历一遍，如果他出现次数不大于 size/2,那么数组中不存在出现次数超过一半的数字，否则就是该 k大数字。
 
 
+
 class Solution {
 public:
     int MoreThanHalfNum_Solution(vector<int> numbers) {
@@ -47,7 +48,7 @@ public:
     int partation(std::vector<int> numbers, int number, int start, int end){
 
         for (int i = start; i < end; i++) {
-            
+
 
         }
     }
