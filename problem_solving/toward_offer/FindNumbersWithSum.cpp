@@ -70,22 +70,49 @@ public:
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 };
+
+
+// advance in time complexity
+// 利用 x + y = const K，想起 他们的乘积 f(x) = x(k-x) 的图像，高中的二次函数
+// 然后结合排序数组的特性，就能将时间复杂度优化到 O(n)
+// Brave!!
+class Solution {
+public:
+    vector<int> FindNumbersWithSum(vector<int> array,int sum) {
+
+        std::vector<int> result;
+
+        int start = 0;
+        int end = array.size()-1;
+        // [sep2,sep)
+        while (start < end){
+            if (array[start] + array[end] == sum) {
+                result.push_back(array[start]);
+                result.push_back(array[end]);
+                break;
+            }else if (array[start] + array[end] > sum) {
+                --end;
+            }else{
+                ++start;
+            }
+        }
+        return result;
+
+        }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
