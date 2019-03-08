@@ -2,7 +2,7 @@
 def q14(countries:list):
   for i in range(len(countries)):
     countries[i] = countries[i].lower()
-  print(countries)
+  # print(countries)
   maxcount = -1
 
   dictionary = {}
@@ -12,27 +12,37 @@ def q14(countries:list):
   for country in countries:
     dictionary[country[0]].append(country)
 
-  for country in countries:
-    count = []
-    history = []
-    jielong(country,dictionary,history=history, results=count)
-    count.sort()
-    if count and count[-1] > maxcount:
-      maxcount = count
+  # print(dictionary)
 
+  for country in countries:
+    results = []
+    history = []
+    history.append(country)
+    jielong(country,dictionary,history, results)
+    if results:
+      print('results: ',results)
+
+    results.sort()
+    if results and results[-1] > maxcount:
+      maxcount = results[-1]
+
+  print('maxcount: ',maxcount)
   return maxcount
 
-def jielong(start_country, dictionary, count=0, history=[], results = []):
+def jielong(start_country, dictionary, history, results):
 
   key = start_country[-1]
-
-  if key not in dictionary:
-    results.append(count)
+  lst = dictionary[key]
+  if not lst:
+    results.append(len(history))
+    if history:
+      print('history: ',history)
     return
-  for next_country in dictionary[key]:
-    if next_country not in history:
-      jielong(next_country,dictionary,count+1,history.append(next_country),results)
-
+  for next_country in lst:
+    if not history or next_country not in history:
+      history.append(next_country)
+      jielong(next_country,dictionary,history,results)
+      del history[-1]
   return
 
 
